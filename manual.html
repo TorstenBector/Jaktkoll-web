@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaktkoll – Användarmanual</title>
+  <meta name="description" content="Komplett användarmanual för Jaktkoll – appen för jaktlaget." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-dark:   #1a4a28;
+      --green-mid:    #2d6a40;
+      --green-light:  #3a7a4a;
+      --gold:         #D4A017;
+      --gold-light:   #f0c040;
+      --white:        #ffffff;
+      --off-white:    #f8f6f1;
+      --text:         #1a2e1a;
+      --text-muted:   #5a7a5a;
+      --border:       #d4e4d4;
+      --danger:       #c0392b;
+      --success:      #27ae60;
+      --warning:      #e67e22;
+      --info:         #5856D6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--green-dark);
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); font-size: 1.3em; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 0.88em; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--green-dark);
+      padding: 7px 18px; border-radius: 20px;
+      font-weight: 600; font-size: 0.88em;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px; margin: 0 auto; padding: 60px 24px;
+    }
+
+    /* ── HEADER ── */
+    .manual-header {
+      background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-mid) 100%);
+      color: white;
+      padding: 48px 24px;
+      border-radius: 12px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .manual-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      margin-bottom: 8px;
+    }
+    .manual-header .version {
+      color: var(--gold);
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+    .manual-header p {
+      margin-top: 12px;
+      opacity: 0.9;
+      font-size: 1em;
+    }
+
+    /* ── CHAPTER ── */
+    .chapter {
+      background: white;
+      padding: 32px;
+      margin-bottom: 24px;
+      border-radius: 8px;
+      border-left: 4px solid var(--green-dark);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .chapter-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .chapter-num {
+      min-width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95em;
+      flex-shrink: 0;
+    }
+    .chapter h2 {
+      margin: 0;
+      color: var(--green-dark);
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+    .chapter-content {
+      font-size: 0.95em;
+      color: var(--text);
+    }
+
+    /* ── COMMON ELEMENTS ── */
+    .chapter p { margin-bottom: 12px; }
+    .chapter p:last-child { margin-bottom: 0; }
+
+    .chapter ol,
+    .chapter ul {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    .chapter li { margin-bottom: 6px; }
+
+    .chapter strong { color: var(--green-dark); font-weight: 600; }
+
+    /* ── TABLES ── */
+    .chapter table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.9em;
+    }
+    .chapter table thead tr {
+      background: var(--green-dark);
+      color: var(--gold);
+    }
+    .chapter table th,
+    .chapter table td {
+      padding: 10px 12px;
+      text-align: left;
+    }
+    .chapter table tbody tr:nth-child(odd) {
+      background: var(--off-white);
+    }
+    .chapter table tbody tr:nth-child(even) {
+      background: white;
+    }
+    .chapter table tbody td { color: var(--text); }
+
+    /* ── BOXES ── */
+    .box {
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin: 12px 0;
+      font-size: 0.9em;
+      border-left: 3px solid;
+    }
+    .box-info {
+      background: #f0f0ff;
+      border-color: var(--info);
+      color: var(--text);
+    }
+    .box-success {
+      background: #e8f8f0;
+      border-color: var(--green-dark);
+      color: var(--text);
+    }
+    .box-warning {
+      background: #fff8e8;
+      border-color: var(--warning);
+      color: var(--text);
+    }
+
+    /* ── STEP BOX ── */
+    .step-flow {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+      font-size: 0.9em;
+    }
+    .step-circle {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-dark);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-circle.primary { background: var(--green-dark); color: var(--gold); }
+    .step-circle.secondary { background: var(--info); color: white; }
+    .step-circle.success { background: var(--success); color: white; }
+    .step-circle.warning { background: var(--warning); color: white; }
+
+    /* ── FAQ ── */
+    .faq-item {
+      margin-bottom: 12px;
+    }
+    .faq-q {
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 4px;
+    }
+    .faq-a {
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.9em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark);
+      color: white;
+      padding: 32px 24px;
+      text-align: center;
+      margin-top: 60px;
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      main { padding: 32px 16px; }
+      .chapter { padding: 20px; }
+      .manual-header h1 { font-size: 1.6em; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">J Jaktkoll</a>
+  <div class="nav-links">
+    <a href="/#funktioner">Funktioner</a>
+    <a href="/#hur-det-funkar">Hur det funkar</a>
+    <a href="/#feedback">Feedback</a>
+  </div>
+  <a href="https://app.jaktkoll.nu" target="_blank" class="nav-cta">Öppna appen →</a>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <div class="manual-header">
+    <h1>⚙️ Jaktkoll Användarmanual</h1>
+    <div class="version">v2.3 · Maj 2026</div>
+    <p>Allt du behöver veta för att komma igång med Jaktkoll</p>
+  </div>
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">1</div>
+      <h2>Introduktion och roller</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Jaktkoll är en mobilanpassad webbapp för att planera, samordna och genomföra jakter. Appen stöder flera jaktlag och anpassar sig automatiskt till ditt lags data.</p>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Roll</th>
+            <th>Behörighet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>⭐ Admin</strong></td>
+            <td>Fullständig behörighet – inställningar, roller, passlista, såtar, viltvårdslistan, QR-kod för medlemsregistrering, radera jakter.</td>
+          </tr>
+          <tr>
+            <td><strong>🦌 Jaktledare</strong></td>
+            <td>Skapar jakter, skickar inbjudningar, hanterar pass, QR-kod för gäster, startar och avbryter jakt.</td>
+          </tr>
+          <tr>
+            <td><strong>🎯 Jägare</strong></td>
+            <td>Ser sina inbjudningar, svarar JA/NEJ/KANSKE, ser Jaktinfo med karta när jakt pågår.</td>
+          </tr>
+          <tr>
+            <td><strong>⏳ Väntande</strong></td>
+            <td>Registrerad via QR-kod – väntar på admin-godkännande. Ingen åtkomst till appen ännu.</td>
+          </tr>
+          <tr>
+            <td><strong>👤 Gäst</strong></td>
+            <td>Extern deltagare via QR-kod eller länk. Inget konto krävs.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Flera personer kan ha rollen Jaktledare. De kan alla administrera jakten – passa om, tilldela pass och avbryta – även om bara en är formell jaktledare för dagen.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">2</div>
+      <h2>Inloggning och jaktlag</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Jaktkoll använder <strong>magic links</strong> – du loggar in via en länk i e-posten, inget lösenord behövs (om du inte valt att sätta ett).</p>
+      
+      <ol>
+        <li>Ange din e-postadress på inloggningssidan och tryck <strong>Skicka inloggningslänk</strong>.</li>
+        <li>Öppna länken i e-posten – du loggas in automatiskt och hamnar i rätt jaktlag.</li>
+        <li>Om du är med i <strong>flera jaktlag</strong> visas en lagväljare. Välj vilket lag du vill jobba i.</li>
+      </ol>
+
+      <p>Du kan byta aktivt jaktlag när som helst via hamburgermenyn → <strong>Byt jaktlag</strong>.</p>
+
+      <div class="box box-warning">
+        <strong>⚠️ Viktigt:</strong> Inloggningslänken gäller i 24 timmar. Om den inte fungerar – begär en ny på inloggningssidan.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">3</div>
+      <h2>Flödesöversikt</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Så fungerar en typisk jaktkväll från början till slut:</p>
+      
+      <div class="step-flow">
+        <div class="step-circle primary">1</div>
+        <div><strong>Skapa jakt</strong> – Jaktledare skapar jakt med namn, plats, tid och WeHunt-kod.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle primary">2</div>
+        <div><strong>Bjud in medlemmar</strong> – Välj jakt i Inbjudningar. Mail med JA/NEJ/KANSKE-knappar skickas automatiskt.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle secondary">3</div>
+        <div><strong>Bjud in gäster</strong> – Dela QR-kod från jaktkortet – gäster registrerar sig utan konto.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle primary">4</div>
+        <div><strong>Kontrollera svar</strong> – Följ JA/NEJ/KANSKE via Inbjudningar-fliken eller Jaktledarmeny.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle success">5</div>
+        <div><strong>Markera deltagare</strong> – Jaktledarmeny → Deltagare: markera närvaro, utse jaktledare och hundförare.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle success">6</div>
+        <div><strong>Välj pass</strong> – Jaktledarmeny → Pass: filtrera och välj pass via lista eller interaktiv karta.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle success">7</div>
+        <div><strong>Tilldela pass</strong> – Jaktledarmeny → Passtilldelning: koppla jägare till pass. Lotta om det behövs.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle success">8</div>
+        <div><strong>Starta jakten</strong> – Tryck 🟢 Starta Jakt. Alla inloggade ser den gula Jaktinfo-knappen med karta direkt.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle warning">9</div>
+        <div><strong>Passa om (vid behov)</strong> – Tryck 🔄 Passa om i Jaktinfo-modalen. Återfördela pass och starta om.</div>
+      </div>
+      <div class="step-flow">
+        <div class="step-circle warning">10</div>
+        <div><strong>Avsluta</strong> – Tryck 🛑 Avbryt jakt eller låt appen avsluta automatiskt vid midnatt.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">4</div>
+      <h2>Skapa och hantera jakter</h2>
+    </div>
+    <div class="chapter-content">
+      <ol>
+        <li>Öppna fliken <strong>Jakter</strong> och tryck <strong>+ Skapa jakt</strong>.</li>
+        <li>Fyll i jaktnamn (obligatoriskt), plats, starttid och meddelande (upp till 720 tecken).</li>
+        <li>Tryck <strong>🎯 Skapa jakt</strong> – appen navigerar automatiskt till Inbjudningar.</li>
+      </ol>
+
+      <p><strong>📱 QR-kod för gäster:</strong> Tryck på 📱 QR-knappen på ett jaktkort för att visa en QR-kod som gäster kan scanna för att anmäla sig direkt.</p>
+
+      <p><strong>Arkivera:</strong> Döljer jakten från listor men sparar data. Använd <strong>🗃️ Arkivera</strong>-knappen.</p>
+
+      <p><strong>Radera permanent</strong> (Admin): Aktivera <strong>🗑️ Radera</strong>-läget i Jakter-fliken. Raderar jakt, inbjudningar och passtilldelningar. Medlemmar och pass behålls.</p>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Kopiera en jakt med 📋-knappen för att återanvända inställningar utan att kopiera deltagare.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">5</div>
+      <h2>Inbjudningar</h2>
+    </div>
+    <div class="chapter-content">
+      <ol>
+        <li>Välj jakt via jaktkort i Inbjudningar-fliken.</li>
+        <li>Se svarsstatus per person – <strong>⏳ Inget svar</strong>, <strong>JA</strong>, <strong>NEJ</strong>, <strong>KANSKE</strong>.</li>
+        <li>Klicka <strong>📨 Påminn</strong> för att skicka om till de som inte svarat.</li>
+        <li>Klicka <strong>🔄 Skicka om</strong> för att skicka ny länk till den som vill ändra svar.</li>
+        <li>Tryck <strong>✉️ Bjud in fler</strong> för att lägga till fler deltagare.</li>
+      </ol>
+
+      <p>Inbjudningsmailen innehåller tre stora knappar: <strong>✅ JA – jag kommer!</strong>, <strong>🤔 KANSKE – osäker</strong> och <strong>❌ NEJ – kan inte komma</strong>. Mottagaren svarar direkt utan att logga in.</p>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Du kan bifoga ett <strong>Jakt-PM</strong> (upp till 720 tecken) som skickas med inbjudan. Redigera det via ✏️ Redigera i Inbjudningar-fliken.
+      </div>
+
+      <div class="box box-warning">
+        <strong>⚠️ Viktigt:</strong> Inbjudningsmail kan hamna i skräpposten. Be mottagaren kontrollera och markera avsändaren som säker.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 6 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">6</div>
+      <h2>Gäster – bjuda in och registrera</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Det finns två sätt att ta med gäster på en jakt:</p>
+
+      <p><strong>Via 👤 Bjud in-knappen</strong> på jaktkortet:</p>
+      <ol>
+        <li>Tryck 👤 Bjud in på jaktkortet.</li>
+        <li>Ange gästens namn och e-post.</li>
+        <li>Gästen får ett mail med JA/NEJ/KANSKE-knappar precis som medlemmar.</li>
+      </ol>
+
+      <p><strong>Via 📱 QR-kod</strong> på jaktkortet:</p>
+      <ol>
+        <li>Tryck 📱 QR på jaktkortet.</li>
+        <li>Visa QR-koden för gästen eller dela länken.</li>
+        <li>Gästen scannar, fyller i namn/e-post/telefon och är direkt anmäld.</li>
+      </ol>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> QR-koden kan skrivas ut eller delas digitalt. Tryck 🖨️ Skriv ut i QR-modalfönstret.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 7 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">7</div>
+      <h2>Deltagare – närvaro och roller</h2>
+    </div>
+    <div class="chapter-content">
+      <p>I <strong>Jaktledarmeny → Deltagare (Närvaroupprop)</strong> hanteras närvaro och roller för jakten:</p>
+
+      <ul>
+        <li><strong>Toggle (Här/Borta)</strong> – Markera vem som är på plats.</li>
+        <li><strong>👑 JL</strong> – Utse jaktledare för jakttillfället. Visas i Jaktinfo för alla.</li>
+        <li><strong>🐕 Hund</strong> – Markera hundförare. Hundförare tilldelas inget pass. Hundar kopplas automatiskt.</li>
+      </ul>
+
+      <p>Antalet <strong>närvarande jägare</strong> (exkl. hundförare) visas i navigationsraden och styr hur många pass som behövs i nästa steg.</p>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Vid <strong>Passa om</strong> – gå till Deltagare och avmarkera de som slutar för dagen innan ny passfördelning.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 8 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">8</div>
+      <h2>Pass – filter, lista och karta</h2>
+    </div>
+    <div class="chapter-content">
+      <p>I <strong>Jaktledarmeny → Pass</strong> väljer du vilka pass som ska användas för jakten. Navigationen visar hur många pass som valts av hur många som behövs.</p>
+
+      <p><strong>① Filtrera pass</strong> – öppna filterpanelen och välj:</p>
+      <ul>
+        <li><strong>Vilt</strong> – Ä (Älg), R (Rådjur), G (Gris), H (Hare), F (Räv)</li>
+        <li><strong>Såt-indelning</strong> – välj en eller flera namngivna såtar</li>
+        <li><strong>Koordinater</strong> – Lat N/M/S kombinerat med Lon v/m/ö</li>
+      </ul>
+
+      <p><strong>Filtrera lista</strong> – visar filtrerade pass i en tabell. Klicka på en rad eller toggle för att välja/avvälja passet. Under tabellen visas en karta med de filtrerade passen plus redan valda pass från andra filter (gröna markörer).</p>
+
+      <p><strong>🗺️ Filtrera på karta</strong> – visar en stor interaktiv karta överst med passlistan under:</p>
+      <ul>
+        <li>⚫ <strong>Grå markör</strong> – passet är inte valt</li>
+        <li>🟢 <strong>Grön markör</strong> – passet är valt och inom kvoten</li>
+        <li>🟡 <strong>Gul markör</strong> – passet är valt men du har fler pass än jägare</li>
+      </ul>
+
+      <p>Klicka direkt på en markör för att välja eller avvälja passet. Kartan visar jaktmarksgräns, förbjudna områden och såtpolygoner.</p>
+
+      <p>Du kan byta filter och klicka "Filtrera på karta" igen – kartan uppdateras direkt med de nya passen, och redan valda pass från tidigare filter visas fortfarande gröna.</p>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Välj pass från såt 1 med "Filtrera på karta", byt sedan filter till såt 2 – de tidigare valda gröna passen syns fortfarande på kartan medan du väljer nya.
+      </div>
+
+      <div class="box box-info">
+        <strong>⛶ Helskärm:</strong> Tryck helskärmsknappen i kartans övre hörn för en större kartvy – bra på platta eller stor skärm.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 9 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">9</div>
+      <h2>Passtilldelning</h2>
+    </div>
+    <div class="chapter-content">
+      <p>I <strong>Jaktledarmeny → Passtilldelning</strong>:</p>
+
+      <ol>
+        <li>Klicka en <strong>jägare</strong> i vänsterkolumnen (markeras med ram).</li>
+        <li>Klicka ett <strong>pass</strong> i högerkolumnen – kopplingen skapas direkt.</li>
+        <li>Klicka <strong>↩ Avkoppla</strong> på en tilldelad rad för att ta bort kopplingen.</li>
+        <li>Tryck <strong>🎲 Lotta resterande pass</strong> för att slumpa resterande jägare och pass.</li>
+      </ol>
+
+      <p>Ange <strong>WeHunt-kod</strong> och tryck <strong>🟢 Starta Jakt</strong> när alla är tilldelade.</p>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Passen som valts i Pass-steget visas här. Bara valda pass kan tilldelas – gå tillbaka till Pass om du vill ändra urvalet.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 10 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">10</div>
+      <h2>Jakt pågår! – Jaktinfo med karta</h2>
+    </div>
+    <div class="chapter-content">
+      <p>När en jakt startas visas en <strong>gul knapp</strong> för alla inloggade. Klickar du på den visas:</p>
+
+      <ul>
+        <li>WeHunt-kod, tillåtet vilt och starttid</li>
+        <li>Jaktledare med klickbart telefonnummer</li>
+        <li>Hundförare och deras hundar</li>
+        <li>Passfördelning med telefonnummer</li>
+        <li><strong>🗺️ Karta</strong> med jaktgräns, förbjudna områden, såtpolygoner och passmarkeringar</li>
+      </ul>
+
+      <div class="box box-success">
+        <strong>🗺️ Kartan:</strong> hämtar jaktgräns, förbjudna områden och såtar dynamiskt från databasen. Tryck ⛶ för helskärm. Växla mellan PassID och jägarnamn.
+      </div>
+
+      <div class="box box-info">
+        <strong>👑 Jaktledare:</strong> ser även <strong>🛑 Avbryt jakt</strong> och <strong>🔄 Passa om</strong> i modalen.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 11 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">11</div>
+      <h2>Passa om och avbryta</h2>
+    </div>
+    <div class="chapter-content">
+      <p><strong>Passa om:</strong></p>
+      <ol>
+        <li>Tryck 🟢 Jakt pågår! → <strong>🔄 Passa om</strong> – alla passfördelningar raderas.</li>
+        <li>Gå till <strong>Deltagare</strong> – avmarkera de som slutar.</li>
+        <li>Gå till <strong>Passtilldelning</strong> och fördela nya pass.</li>
+        <li>Tryck <strong>🟢 Starta Jakt</strong> igen.</li>
+      </ol>
+
+      <p><strong>Avbryta:</strong></p>
+      <ol>
+        <li>Tryck 🟢 Jakt pågår! → <strong>🛑 Avbryt jakt</strong>.</li>
+        <li>Jägare ser "Jakten avbruten" med jaktledarens kontakt.</li>
+      </ol>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Alla jakter avslutas automatiskt vid midnatt.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 12 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">12</div>
+      <h2>Viltvårdslistan</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Dokumentera och håll koll på underhållsbehov och viltvårdsåtgärder för ditt jaktlag. Öppna <strong>Hamburgermenyn → Viltvårdslistan</strong>:</p>
+
+      <p><strong>Lägg till en post:</strong></p>
+      <ol>
+        <li><strong>Namn</strong> – Beskrivande titel (t.ex. "Torn vid övre sjön")</li>
+        <li><strong>Kategori</strong> – Torn, Saltstenar, Broar & vägar, Återplátser, Övriga</li>
+        <li><strong>Prioritet</strong> – Låg, Medel, Hög</li>
+        <li><strong>Plats</strong> – Koppla till ett pass eller ange GPS-koordinater direkt</li>
+        <li><strong>Senaste underhål</strong> – Datum för senast utförd åtgärd</li>
+        <li><strong>Nästa planerad</strong> – Datum för nästa planerade insats</li>
+        <li><strong>Taggning</strong> – Lägg till anpassade etiketter för snabb sökning</li>
+        <li><strong>Anteckningar</strong> – Dokumentera vad som gjorts och vad som behöver göras</li>
+      </ol>
+
+      <p><strong>Hantera listan:</strong></p>
+      <ul>
+        <li>Redigera befintliga poster för att uppdatera status och datum</li>
+        <li>Filtrera på kategori eller prioritet för att se aktuella behov</li>
+        <li>Följ upp planerade underhål och markera som utfört</li>
+      </ul>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Viltvårdslistan är perfekt för att dokumentera löpande underhål – både planerat och utfört. Använd taggningsfunktionen för att snabbt hitta liknande åtgärder.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 13 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">13</div>
+      <h2>Passlista och GPX-import</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Pass administreras i <strong>ADMIN → Passlista</strong> eller via <strong>Superuser → Jaktlag → Importera GPX</strong>:</p>
+
+      <ul>
+        <li><strong>GPX-import (rekommenderat)</strong> – 4-stegs wizard: ladda upp WeHunt GPX → granska pass → rita/klassificera såtar → importera.</li>
+        <li><strong>Excel-import (backup)</strong> – Importera .xlsx med kolumner: PassID, Beskrivning, Vilt, Typ, lat, lon.</li>
+        <li><strong>Manuellt</strong> – Lägg till enstaka pass med PassID, typ, vilt, omrade, såt och GPS-koordinater.</li>
+      </ul>
+
+      <div class="box box-success">
+        <strong>🗺️ GPS:</strong> GPS-koordinater på passen används för att visa dem på kartan. Omrade (N/M/S + v/m/ö) beräknas automatiskt vid import.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 14 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">14</div>
+      <h2>Såtar</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Såtar används för att gruppera pass geografiskt. De klassificeras automatiskt vid GPX-import via punkt-i-polygon analys.</p>
+
+      <ul>
+        <li><strong>GPX har såtar</strong> – klassificeras automatiskt. Ge dem namn i importwizarden.</li>
+        <li><strong>GPX saknar såtar</strong> – Rita egna polygoner på kartan i Steg 3 av wizarden.</li>
+        <li><strong>Efterhandsredigering</strong> – Admin → Såtar. Ändra display_name, se vilka pass som ingår, och lägga till/ta bort pass från såtar.</li>
+      </ul>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> Ett pass kan tillhöra flera såtar – praktiskt för gränspass. Såtar visas som färgade polygoner på kartan i både Jaktinfo och passväljaren.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 15 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">15</div>
+      <h2>Demo-miljön</h2>
+    </div>
+    <div class="chapter-content">
+      <p><strong>Jaktkoll Demo</strong> är en testmiljö för att prova appen utan registrering:</p>
+
+      <ul>
+        <li><strong>Jaktlag:</strong> Skogstorpets Jaktlag (påhittat)</li>
+        <li><strong>Pass:</strong> 60 pass fördelade på 9 såtar</li>
+        <li><strong>Medlemmar:</strong> 18 botmedlemmar med olika roller</li>
+        <li><strong>Möjligheter:</strong> Testa alla användarroller, skapa jakter, tilldela pass, se Jaktinfo med karta</li>
+      </ul>
+
+      <p><strong>Data-retention:</strong> All data i demo-miljön raderas automatiskt efter 30 minuter. Varje session startar helt ny.</p>
+
+      <p><strong>Perfekt för:</strong></p>
+      <ul>
+        <li>Att förstå appen innan registrering</li>
+        <li>Att prova olika roller och funktioner</li>
+        <li>Att se hur Jaktinfo och passfördelning fungerar i praksis</li>
+        <li>Utan att behöva lämna e-postadress eller lösenord</li>
+      </ul>
+
+      <div class="box box-success">
+        <strong>🔄 Data:</strong> raderas automatiskt efter 30 minuter – du kan testa utan att oroa dig för att spara något.
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 16 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">16</div>
+      <h2>Hundar</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Hundar hanteras i fliken <strong>Hundar</strong>:</p>
+
+      <ul>
+        <li>Tryck <strong>+ Lägg till hund</strong> och fyll i namn, ras, ålder och Garmin-ID.</li>
+        <li><strong>Garmin-ID</strong> möjliggör positionsspårning i WeHunt/Garmin Alpha.</li>
+        <li>Varje hund kopplas till en ägare i laget.</li>
+      </ul>
+
+      <p>Under jakten: markeras en jägare som 🐕 Hundförare i Deltagare-vyn aktiveras deras hundar automatiskt i Jaktinfo.</p>
+    </div>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">?</div>
+      <h2>Vanliga frågor</h2>
+    </div>
+    <div class="chapter-content">
+      <div class="faq-item">
+        <div class="faq-q">❓ Kan jag ändra mitt svar?</div>
+        <div class="faq-a">Ja – tryck på JA/NEJ/KANSKE i jaktkortet eller öppna e-postlänken igen.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Ingen inbjudan?</div>
+        <div class="faq-a">Kontrollera skräpposten. Be jaktledaren skicka om via Inbjudningar-fliken.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Magic link ogiltig?</div>
+        <div class="faq-a">Jakten kan ha raderats eller länken utgått. Be jaktledaren skicka en ny inbjudan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Glömt lösenord?</div>
+        <div class="faq-a">Logga ut och tryck "Skicka inloggningslänk" på inloggningssidan för en magic link.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Vad är WeHunt-koden?</div>
+        <div class="faq-a">Kopplar jakten till rätt GPS-projekt i WeHunt-appen.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Syns inte Jaktinfo-knappen?</div>
+        <div class="faq-a">Knappen visas bara när en jakt är startad. Ladda om sidan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Kartan visas inte i passväljaren?</div>
+        <div class="faq-a">Kartan visas bara när ett filter är aktivt. Välj vilt, såt eller område och tryck Filtrera.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Kartan visar fel pass?</div>
+        <div class="faq-a">Klicka Filtrera lista och sedan Filtrera på karta igen för att uppdatera kartan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Såt visas inte i filter?</div>
+        <div class="faq-a">Såtar måste vara importerade och namngivna. Kontakta admin.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Jag är med i två jaktlag?</div>
+        <div class="faq-a">Välj aktivt lag vid inloggning eller via hamburgermenyn → Byt jaktlag.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Arkiverade jakter?</div>
+        <div class="faq-a">Sparas i databasen men syns inte i listorna. Admin ser dem via "Alla jakter".</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Hur registrerar jag nya medlemmar?</div>
+        <div class="faq-a">Admin → Inställningar → 📱 QR – Medlemsregistrering. Dela QR-koden med nya medlemmar. De hamnar under Admin → Väntande för godkännande.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Hur bjuder jag in en gäst?</div>
+        <div class="faq-a">Antingen via 👤 Bjud in-knappen på jaktkortet (e-post) eller via 📱 QR-koden för direktregistrering.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Vad är Jaktkoll Demo?</div>
+        <div class="faq-a">En testmiljö med ett påhittat jaktlag (Skogstorpets Jaktlag) med 60 pass, 9 såtar och 18 botmedlemmar. All data raderas automatiskt efter 30 minuter.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">❓ Hur dokumenterar jag underhållsbehov?</div>
+        <div class="faq-a">Öppna Hamburgermenyn → Viltvårdslistan. Lägg till nya poster med kategori, prioritet, plats och anteckningar. Redigera för att uppdatera status och utförda åtgärder.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom: 16px;">
+    <a href="https://app.jaktkoll.nu" target="_blank">🔗 Öppna Jaktkoll</a> · 
+    <a href="/">Hem</a> · 
+    <a href="mailto:info@jaktkoll.nu">Kontakt</a>
+  </p>
+  <p style="font-size: 0.85em; opacity: 0.8;">Jaktkoll v2.3 · Maj 2026 · För support, kontakta din administratör</p>
+</footer>
+
+</body>
+</html>
