@@ -1,0 +1,11 @@
+# llms.txt — Jaktkoll
+# Created: 2026-06-04
+# Purpose: discovery file to help AI agents find basic info about this site and available resources.
+
+Site: Jaktkoll
+URL: https://jaktkoll.nu/
+Contact: info@jaktkoll.nu
+Updated: 2026-06-04
+Description: Jaktkoll är en webbapp och PWA för svenska jaktlag — planering, pass och inbjudningar.
+Manual: /manual.html
+Notes: Added safe-area / viewport updates for modern iPhones. This file is intentionally simple; agents may parse key:value pairs.

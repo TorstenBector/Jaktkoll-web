@@ -2,7 +2,7 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Jaktkoll – Smarta verktyg för jaktlaget</title>
   <meta name="description" content="Jaktkoll är appen som hjälper jaktlaget att hålla koll på jakter, pass, medlemmar och hundar – enkelt och smidigt." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,13 +24,21 @@
       --border: #d4e4d4;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
 
     body {
       font-family: 'Inter', Arial, sans-serif;
       background: var(--white);
       color: var(--text);
       line-height: 1.6;
+      padding-top: env(safe-area-inset-top);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     /* ── NAV ── */
@@ -39,15 +47,20 @@
       top: 0;
       z-index: 100;
       background: var(--green-dark);
-      padding: 0 24px;
+      padding-top: env(safe-area-inset-top);
+      padding: 0 calc(24px + env(safe-area-inset-right));
+      padding-left: calc(24px + env(safe-area-inset-left));
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: calc(60px + env(safe-area-inset-top));
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     nav .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'Playfair Display', serif;
       color: var(--gold);
       font-size: 1.3em;
@@ -55,17 +68,79 @@
       font-weight: 700;
     }
 
-    nav a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      font-size: 0.88em;
-      font-weight: 500;
-      transition: color 0.2s;
-      margin: 0 12px;
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--green-mid);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.1em;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
     }
 
-    nav a:hover {
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-menu a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.92em;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
       color: var(--gold);
+    }
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--green-mid);
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .hamburger {
+      display: none;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 10px;
+      margin-left: 12px;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .nav-cta {
@@ -79,6 +154,41 @@
 
     .nav-cta:hover {
       background: var(--gold-light);
+    }
+
+    @media (max-width: 992px) {
+      .nav-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: calc(16px + env(safe-area-inset-right));
+        background: rgba(26,74,40,0.96);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+        flex-direction: column;
+        align-items: flex-start;
+        width: min(220px, calc(100vw - 40px));
+        padding: 16px;
+        display: none;
+      }
+
+      .nav-menu.open {
+        display: flex;
+      }
+
+      .nav-menu a {
+        margin: 10px 0;
+      }
+
+      .hamburger {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 calc(16px + env(safe-area-inset-right));
+      }
     }
 
     /* ── HERO ── */
@@ -428,6 +538,7 @@
       background: var(--green-dark);
       color: var(--white);
       padding: 32px 24px;
+      padding-bottom: calc(32px + env(safe-area-inset-bottom));
       text-align: center;
     }
 
@@ -479,12 +590,19 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="logo">J Jaktkoll</a>
-  <div style="display: flex; align-items: center;">
+  <a href="/" class="logo">
+    <span>Jaktkoll</span>
+    <span class="logo-mark">J</span>
+  </a>
+  <button class="hamburger" id="menu-toggle" aria-label="Öppna meny" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-menu" id="nav-menu">
     <a href="#features">Funktioner</a>
     <a href="#how">Hur det funkar</a>
     <a href="#feedback">Feedback</a>
-    <a href="https://app.jaktkoll.nu" class="nav-cta" target="_blank">Öppna appen →</a>
   </div>
 </nav>
 
@@ -730,6 +848,18 @@ async function sendFeedback() {
     status.style.display = 'block'
   }
 }
+</script>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
 </script>
 
 </body>
