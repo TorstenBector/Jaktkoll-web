@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="sv">
 <head>
   <meta charset="UTF-8" />
@@ -276,7 +276,7 @@
 
   <div class="manual-header">
     <h1>⚙️ Jaktkoll Användarmanual</h1>
-    <div class="version">v2.4 · Juni 2026</div>
+    <div class="version">v2.5 · Juni 2026</div>
     <p>Allt du behöver veta för att komma igång med Jaktkoll</p>
   </div>
 
@@ -342,6 +342,8 @@
       </ol>
 
       <p>Du kan byta aktivt jaktlag när som helst via hamburgermenyn → <strong>Byt jaktlag</strong>.</p>
+
+      <p><strong>Välkomstmail:</strong> Nya medlemmar som lagts till av admin får ett välkomstmail med en inloggningslänk. Din e-postadress fylls i automatiskt — tryck bara <strong>Skicka inloggningslänk</strong> för att få en engångslänk direkt.</p>
 
       <div class="box box-warning">
         <strong>⚠️ Viktigt:</strong> Inloggningslänken gäller i 24 timmar. Om den inte fungerar – begär en ny på inloggningssidan.
@@ -749,6 +751,41 @@
     </div>
   </div>
 
+  <!-- CHAPTER 17 -->
+  <div class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num">17</div>
+      <h2>Välkomna nya medlemmar</h2>
+    </div>
+    <div class="chapter-content">
+      <p>Det finns två sätt att lägga till nya medlemmar i Jaktkoll:</p>
+
+      <p><strong>A. Välkomstmail</strong> (Admin lägger till manuellt):</p>
+      <ol>
+        <li>Admin lägger till ny medlem i Medlemmar-fliken.</li>
+        <li>Den nya medlemmen får ett välkomstmail med en personlig inloggningslänk.</li>
+        <li>Länken öppnar appen med e-postadressen redan ifylld — tryck bara <strong>Skicka inloggningslänk</strong> för att logga in direkt.</li>
+      </ol>
+
+      <p><strong>B. Registrerings-QR</strong> (Admin/Jaktledare → Medlemmar-fliken):</p>
+      <ol>
+        <li>Tryck <strong>🔗 Registrerings-QR</strong> i Medlemmar-fliken för att visa en QR-kod för ditt jaktlag.</li>
+        <li>Dela koden — skriv ut och sätt upp i jaktstugan, visa på skärm vid årsmöte, eller dela länken digitalt.</li>
+        <li>Intresserade scannar QR-koden och fyller i namn, e-post och mobilnummer utan att behöva ett konto.</li>
+        <li>Ansökan hamnar som ett <strong>gult fält "👥 Väntande ansökningar"</strong> högst upp i Medlemmar-fliken.</li>
+        <li>Tryck <strong>Granska</strong> för att se listan och <strong>✅ Godkänn</strong> för att lägga till som Jägare, eller <strong>❌ Avvisa</strong> för att neka.</li>
+      </ol>
+
+      <div class="box box-success">
+        <strong>💡 Tips:</strong> QR-koden är statisk och jaktlagspecifik — samma kod används gång på gång. Perfekt att ha uppsatt permanent i jaktstugan!
+      </div>
+
+      <div class="box box-warning">
+        <strong>⚠️ Observera:</strong> Godkända QR-ansökningar läggs till med rollen Jägare. Admin kan ändra rollen efteråt i Medlemmar-fliken om personen ska ha en annan behörighet.
+      </div>
+    </div>
+  </div>
+
   <!-- FAQ SECTION -->
   <div class="chapter">
     <div class="chapter-header">
@@ -802,7 +839,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">❓ Hur registrerar jag nya medlemmar?</div>
-        <div class="faq-a">Admin → Inställningar → 📱 QR – Medlemsregistrering. Dela QR-koden med nya medlemmar. De hamnar under Admin → Väntande för godkännande.</div>
+        <div class="faq-a">Tryck <strong>🔗 Registrerings-QR</strong> i Medlemmar-fliken. Dela QR-koden — intresserade fyller i sina uppgifter direkt. Ansökningar visas som ett gult fält i Medlemmar-fliken för godkännande. Se kapitel 17 för detaljer.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">❓ Hur bjuder jag in en gäst?</div>
@@ -828,9 +865,10 @@
       <h2>Senaste ändringar</h2>
     </div>
     <div class="chapter-content">
-      <p>Juni 2026: Layoutfix för moderna iPhone-modeller (t.ex. iPhone 17 Pro). Vi har lagt till stöd för <strong>safe area</strong> och uppdaterat meta viewport så att sidan inte klipps vid skärmkanter.</p>
-      <p>En <strong>llms.txt</strong>-fil har lagts till i rotmappen för enklare upptäckbarhet av AI-agenter och verktyg som söker efter öppna beskrivningar av webbplatsens LLM-resurser.</p>
-      <p>För att få ändringarna live, ladda upp de uppdaterade filerna till din webbserver (se avsnitt nedan för HostUp/SFTP-instruktioner).</p>
+      <p><strong>v2.5 – Juni 2026:</strong> Ny funktion: <strong>Registrerings-QR</strong> i Medlemmar-fliken. Admin/Jaktledare kan nu visa en statisk QR-kod för jaktlaget — nya medlemmar scannar, fyller i uppgifter och hamnar i en "Väntande ansökningar"-kö för admin-godkännande. Se kapitel 17.</p>
+      <p>Förbättrat välkomstmail: länken öppnar nu inloggningssidan med mottagarens e-postadress förifylld och redo för magic link — ett klick räcker för att logga in.</p>
+      <p>Gästregistrering via jakt-QR förbättrad: befintliga medlemmar uppdaterar sitt mobilnummer vid anmälan, nya gäster registreras korrekt med gästroll.</p>
+      <p>Juni 2026: Layoutfix för moderna iPhone-modeller (t.ex. iPhone 17 Pro). Safe area-stöd och uppdaterat meta viewport.</p>
     </div>
   </div>
 
@@ -841,8 +879,9 @@
     <a href="/">Hem</a> · 
     <a href="mailto:info@jaktkoll.nu">Kontakt</a>
   </p>
-  <p style="font-size: 0.85em; opacity: 0.8;">Jaktkoll v2.3 · Maj 2026 · För support, kontakta din administratör</p>
+  <p style="font-size: 0.85em; opacity: 0.8;">Jaktkoll v2.5 · Juni 2026 · För support, kontakta din administratör</p>
 </footer>
 
 </body>
 </html>
+
